@@ -1,0 +1,29 @@
+{
+  "name": "db-mysql",
+  "description": "Creates a database used by app tomcat servers",
+  "default_attributes": {
+    "server_affix": "db-server",
+    "mysql": {
+      "tunable": {
+        "max_connections": "10",
+        "wait_timeout": "20000",
+        "expire_logs_days": 3
+      }
+    },
+    "docker_options": {
+      "base_image": {
+        "name": "ubuntu",
+        "repository": "ubuntu",
+        "tag": "14.04"
+      },
+      "command": "service postgresql start",
+      "ports": [
+        "9501"
+      ]
+    }
+  },
+  "run_list": [
+    "recipe[custom_recipes::logrotate]",
+    "recipe[apt]"
+  ]
+}

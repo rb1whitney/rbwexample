@@ -1,0 +1,36 @@
+---
+<% if ENV['use_docker'] == true %>
+driver:
+  name: docker
+  provision_command: curl -L http://www.chef.io/chef/install.sh | bash
+<% else %>
+driver:
+  name: vagrant
+  provision_command: curl -L http://www.chef.io/chef/install.sh | bash
+<% end %>
+provisioner:
+  name: chef_zero
+  cookbooks_path: "cookbooks"
+  data_bag_path: "data_bags"
+  environment_path: "environments"
+  nodes_path: "nodes"
+  roles_path: "roles"
+  encrypted_data_bag_secret_key_path: "/etc/chef/encrypted_data_bag_secret"
+  solo_rb:
+    ssl_verify_mode: verify_peer
+  client_rb:
+    environment: local
+
+platforms:
+  - name: ubuntu-14.04
+
+suites:
+  - name: app-server
+    run_list:
+      - role[app-tomcat]
+  - name: db-server
+    run_list:
+      - role[db-mysql]
+  - name: lb-server
+    run_list:
+      - role[lb-haproxy]

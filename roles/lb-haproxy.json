@@ -1,0 +1,38 @@
+{
+  "name": "lb-haproxy",
+  "description": "Creates a load balancer for app tomcat servers",
+  "default_attributes": {
+    "server_affix": "lb-server",
+    "haproxy": {
+      "app_server_role": "app-tomcat",
+      "incoming_port": "9080",
+      "ssl_incoming_port": "9443",
+      "member_port": 9506,
+      "ssl_member_port": 9443,
+      "member_max_connections": 10,
+      "balance_algorithm": "roundrobin"
+    },
+    "appserver": {
+      "log_name": "LB_Logs",
+      "log_paths": [
+        "/var/log/haproxy*.log"
+      ]
+    },
+    "docker_options": {
+      "base_image": {
+        "name": "ubuntu",
+        "repository": "ubuntu",
+        "tag": "14.04"
+      },
+      "command": "service haproxy start",
+      "ports": [
+        "9503"
+      ]
+    }
+  },
+  "run_list": [
+    "recipe[haproxy]",
+    "recipe[custom_recipes::logrotate]",
+    "recipe[apt]"
+  ]
+}
