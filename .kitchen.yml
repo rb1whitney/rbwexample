@@ -1,7 +1,10 @@
 ---
-<% if ENV['use_docker'] == true %>
+<% if ENV['use_docker'] == 'true' %>
 driver:
   name: docker
+  binary: /usr/bin/docker
+  socket: unix:///var/run/docker.sock
+  use_sudo: false
   provision_command: curl -L http://www.chef.io/chef/install.sh | bash
 <% else %>
 driver:

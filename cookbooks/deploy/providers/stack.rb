@@ -10,6 +10,23 @@ action :create do
   new_resource.stacks.each { |roles_to_create|
     machine_batch roles_to_create do
       roles_to_create.each { |role_to_create|
+        options = case ENV['provider']
+                    when 'docker'
+                      {
+                          docker_options: role_attributes['docker_options']
+                      }
+                    else
+                      {
+                          vagrant_options: role_attributes['vagrant_options'],
+                          vagrant_config: <<EOF
+                          config.vm.provider 'virtualbox' do |v|
+                          v.memory = #{role_attributes['memory']}
+                          v.cpus = #{role_attributes['cpu']}
+                          end
+                          EOF
+        }
+        end
+
         roles = search(:role, "name:#{role_to_create}")
         Chef::Log.fatal "Unable to find any roles searching for: #{new_resource.role_name}." if roles.empty?
         role_name = roles.first.name
@@ -18,7 +35,7 @@ action :create do
           machine "#{environment_name}-#{role_attributes['server_affix']}-#{i}" do
             role role_name
             chef_environment environment_name
-            machine_options :docker_options => role_attributes['docker_options']
+            machine_options options
           end
         }
       }

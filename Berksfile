@@ -11,3 +11,8 @@ group :community do
   cookbook 'mysql', '~> 7.0.0'
   cookbook 'tomcat', '~> 2.1.0'
 end
+
+group :local do
+  cookbook 'custom_recipes', path: './cookbooks/custom_recipes'
+  cookbook 'deploy', path: './cookbooks/deploy'
+end
