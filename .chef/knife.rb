@@ -6,7 +6,7 @@ log_location             STDOUT
 knife[:berkshelf_path] = 'cookbooks'
 knife[:editor] = 'vim -f'
 
-ssl_verify_mode :verify_none
+ssl_verify_mode :verify_peer
 verify_api_cert true
 
 chef_server_url  'https://chefserver.rwhitney.com/organizations/rb1whitney'
@@ -15,7 +15,7 @@ client_key '/etc/chef/rb1whitney.pem'
 node_name 'rwhitney'
 
 unless ENV['ignore_chef_path']
-cookbook_path    'cookbooks'
+cookbook_path [ 'cookbooks', 'site-cookbooks' ]
 node_path        'nodes'
 role_path        'roles'
 environment_path 'environments'

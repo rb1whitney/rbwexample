@@ -40,7 +40,7 @@
   },
   "run_list": [
     "recipe[apt]",
-    "recipe[custom_recipes::logrotate]",
-    "recipe[custom_recipes::tomcat_app]"
+    "recipe[my-tomcat::logrotate]",
+    "recipe[my-tomcat::tomcat_app]"
   ]
 }

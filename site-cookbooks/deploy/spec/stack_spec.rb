@@ -1,4 +1,6 @@
 require 'chefspec'
+require 'chefspec/berkshelf'
+
 require 'json'
 
 describe 'deploy::default' do
@@ -9,7 +11,7 @@ describe 'deploy::default' do
   end
 
   before :each do
-    stub_search('environment', 'name:local').and_return([Chef::Environment.json_create(JSON.parse(File.read('environments/spec_testing.json')))])
+    stub_search('environment', 'name:_default').and_return([Chef::Environment.json_create(JSON.parse(File.read('environments/spec_testing.json')))])
     stub_search('role', 'name:app-tomcat').and_return([Chef::Environment.json_create(JSON.parse(File.read('roles/app-tomcat.json')))])
     stub_search('role', 'name:db-mysql').and_return([Chef::Environment.json_create(JSON.parse(File.read('roles/db-mysql.json')))])
     stub_search('role', 'name:lb-haproxy').and_return([Chef::Environment.json_create(JSON.parse(File.read('roles/lb-haproxy.json')))])

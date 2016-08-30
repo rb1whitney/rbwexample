@@ -3,4 +3,5 @@ Chef::Log.fatal "Please pass environment variables: #{environment_name}." if env
 
 deploy_stack environment_name do
   stacks [['db-mysql'], ['app-tomcat'], ['lb-haproxy']]
+  action ENV['DESTROY_ENV'] == 'true' ? :destroy : :create
 end

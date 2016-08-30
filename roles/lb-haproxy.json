@@ -39,7 +39,6 @@
   },
   "run_list": [
     "recipe[apt]",
-    "recipe[haproxy]",
-    "recipe[custom_recipes::logrotate]"
+    "recipe[haproxy]"
   ]
 }

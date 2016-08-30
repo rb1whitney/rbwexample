@@ -13,7 +13,9 @@ driver:
 <% end %>
 provisioner:
   name: chef_zero
-  cookbooks_path: "cookbooks"
+  cookbooks_path:
+      - ../cookbooks
+      - ../site-cookbooks
   data_bag_path: "data_bags"
   environment_path: "environments"
   nodes_path: "nodes"
