@@ -1,0 +1,6 @@
+<tomcat-users>
+  <% if node['tomcat']['manager-gui']['enabled'] %>
+  <role rolename="manager-gui"/>
+  <user username="<%= node['tomcat']['manager-gui']['username'] %>" password="<%= node['tomcat']['manager-gui']['username'] %>" roles="manager-gui"/>
+  <% end %>
+</tomcat-users>
