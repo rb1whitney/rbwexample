@@ -17,24 +17,6 @@
       "log_paths": [
         "/var/log/haproxy*.log"
       ]
-    },
-    "docker_options": {
-      "base_image": {
-        "name": "ubuntu",
-        "repository": "ubuntu",
-        "tag": "14.04"
-      },
-      "command": "service haproxy start",
-      "ports": [
-        "9503"
-      ]
-    },
-    "vagrant_options": {
-      "vm.box": "opscode_ubuntu-12.04_provisionerless",
-      "vm.box_url": "https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box",
-      "vm.network": ":forwarded_port, guest: 80, host: 8080",
-      "memory": 512,
-      "cpu": 1
     }
   },
   "run_list": [

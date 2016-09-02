@@ -1,0 +1,4 @@
+# Custom MySQL Tunables
+<% node['mysql']['tunables'].each do |name, value| %>
+<%=name%>=<%=value%>
+<% end %>

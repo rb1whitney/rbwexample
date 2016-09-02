@@ -8,28 +8,12 @@
         "max_connections": "10",
         "wait_timeout": "20000",
         "expire_logs_days": 3
-      }
-    },
-    "docker_options": {
-      "base_image": {
-        "name": "ubuntu",
-        "repository": "ubuntu",
-        "tag": "14.04"
       },
-      "command": "service mysql start",
-      "ports": [
-        "9501"
-      ]
-    },
-    "vagrant_options": {
-      "vm.box": "opscode_ubuntu-12.04_provisionerless",
-      "vm.box_url": "https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box",
-      "vm.network": ":forwarded_port, guest: 80, host: 8080",
-      "memory": 512,
-      "cpu": 1
+      "password": "changeme"
     }
   },
   "run_list": [
-    "recipe[apt]"
+    "recipe[apt]",
+    "recipe[my-mysql]"
   ]
 }

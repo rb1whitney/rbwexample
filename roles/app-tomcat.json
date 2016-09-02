@@ -3,39 +3,8 @@
   "description": "Creates a base tomcat instance to deploy an application",
   "default_attributes": {
     "server_affix": "app-server",
-    "java": {
-      "jdk_version": "7"
-    },
-    "tomcat": {
-      "base_version": "7",
-      "port": "9506",
-      "ssl_port": "9443",
-      "java_options": "-Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms1536m -Xmx1536m -XX:NewSize=256m -XX:MaxNewSize=256m -XX:PermSize=256m -XX:MaxPermSize=512m -XX:+DisableExplicitGC"
-    },
-    "appserver": {
-      "log_name": "Tomcat_Logs",
-      "log_paths": [
-        "/var/log/tomcat/myapp.log",
-        "/opt/local/tomcat/catalina.out"
-      ]
-    },
-    "docker_options": {
-      "base_image": {
-        "name": "ubuntu",
-        "repository": "ubuntu",
-        "tag": "14.04"
-      },
-      "command": "service tomcat7 start",
-      "ports": [
-        "9502"
-      ]
-    },
-    "vagrant_options": {
-      "vm.box": "opscode_ubuntu-12.04_provisionerless",
-      "vm.box_url": "https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box",
-      "vm.network": ":forwarded_port, guest: 80, host: 8080",
-      "memory": 512,
-      "cpu": 1
+    "maven": {
+      "maven_args": "-Pmysql"
     }
   },
   "run_list": [

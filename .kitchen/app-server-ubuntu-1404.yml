@@ -1,7 +1,0 @@
----
-ssh_key: "/home/rwhitney/IdeaProjects/rbwexample/.kitchen/docker_id_rsa"
-image_id: bbf09bb0f456
-container_id: 286c8fcfe99d73486e6ca3d3b8b0e741294fee828585fa7739ea961c148ade68
-hostname: localhost
-port: 32768
-last_action: converge
