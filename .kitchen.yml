@@ -33,12 +33,12 @@ platforms:
       box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-7.1_chef-provisionerless.box
 
 suites:
-  - name: app-server
+  - name: kitchen-demo-app-server
     run_list:
       - role[app-tomcat]
-  - name: db-server
+  - name: kitchen-demo-db-server
     run_list:
       - role[db-mysql]
-  - name: lb-server
+  - name: kitchen-demo-lb-server
     run_list:
       - role[lb-haproxy]
