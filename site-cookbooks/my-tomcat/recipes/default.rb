@@ -1,5 +1,5 @@
 # Install Java and Git first
-include_recipe 'java::oracle'
+include_recipe 'java'
 include_recipe 'git'
 include_recipe 'maven'
 

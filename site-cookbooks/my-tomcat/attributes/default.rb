@@ -32,3 +32,4 @@ default['logrotate']['log_name'] = 'rotate_logs'
 default['logrotate']['log_paths'] = %W(/var/log/cloud-boot-app/cloud-boot-app.log #{node['tomcat']['install_dir']}/logs/catalina.out)
 
 default['java']['jdk_version'] = '7'
+default['java']['remove_deprecated_packages'] = true

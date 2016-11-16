@@ -8,8 +8,7 @@
     }
   },
   "run_list": [
-    "recipe[apt]",
-    "recipe[my-tomcat::logrotate]",
-    "recipe[my-tomcat::tomcat_app]"
+    "recipe[my-base]",
+    "recipe[my-tomcat]"
   ]
 }
